@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Executor - Steampunk Style</title>
+    <style>
+        /* Загальні стилі сторінки */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #2b1f15;
+            color: #f5d19c;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://i.imgur.com/tKGD5E4.jpeg'); /* Текстура в стилі Steampunk */
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        h2, h3 {
+            text-align: center;
+            font-size: 2rem;
+            text-shadow: 2px 2px 5px #000000;
+        }
+
+        form {
+            text-align: center;
+            background: rgba(43, 31, 21, 0.9);
+            border: 5px solid #a76f50;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px #7f5935, inset 0px 0px 10px #3f2c1a;
+        }
+
+        label {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        #query {
+            width: 80%;
+            height: 150px;
+            margin-top: 10px;
+            border: 2px solid #d9a764;
+            border-radius: 5px;
+            background-color: #3f2c1a;
+            color: #f5d19c;
+            padding: 10px;
+            font-size: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+            resize: both; /* Додає можливість змінювати розмір */
+            overflow: auto; /* Додає прокрутку, якщо текст виходить за межі */
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: 3px solid #7f5935;
+            background: linear-gradient(to bottom, #d9a764, #a76f50);
+            color: #2b1f15;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0px 4px #7f5935;
+            transition: all 0.2s ease-in-out;
+        }
+
+        button:hover {
+            background: linear-gradient(to bottom, #a76f50, #d9a764);
+            box-shadow: 0px 6px #5a3e28;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            box-shadow: 0px 2px #5a3e28;
+            transform: translateY(2px);
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: rgba(43, 31, 21, 0.8);
+            border: 3px solid #d9a764;
+            border-radius: 10px;
+            box-shadow: inset 0px 0px 10px #7f5935;
+            color: #f5d19c;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h2>SQL Executor</h2>
+    <form id="sqlForm">
+        <label for="query">Enter SQL Query:</label><br/>
+        <textarea id="query" name="query" placeholder="Write your SQL query here..."></textarea>
+        <br/>
+        <button type="button" onclick="executeQuery()">Execute</button>
+    </form>
+    <h3>Result:</h3>
+    <div id="result">Results will appear here.</div>
+</div>
+<script>
+    function executeQuery() {
+        const query = document.getElementById('query').value;
+        fetch('/data/execute', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({ query })
+        })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('result').innerHTML = data;
+            })
+            .catch(error => {
+                document.getElementById('result').innerHTML = "Error: " + error.message;
+            });
+    }
+</script>
+</body>
+</html>
