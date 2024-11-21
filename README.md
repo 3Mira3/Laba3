@@ -75,6 +75,7 @@ The application is designed to interact with a PostgreSQL database. Ensure that 
 
 - Implements SQL injection protection.
 - Includes robust data validation mechanisms.
+- Has code for checking the operation of queries without protection against SQL injections.
 
 # Technologies Used
 
