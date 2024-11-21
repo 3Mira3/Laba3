@@ -50,39 +50,39 @@ The application consists of the following essential files:
 3. Build the project using Maven:
    ```bash
    mvn clean install
-
 4. Run the application:
-
+```bash
 java -jar target/laba3restapplication.jar
-
+```
 5. Open http://localhost:8080/ in your browser.
 
-Database Configuration
+# Database Configuration
+
 The application is designed to interact with a PostgreSQL database. Ensure that your database contains the required tables. The following example fields are expected:
 
-country: id, name, priority.
-Additional tables can be added as needed.
+- 'country': 'id', 'name', 'priority'.
+- Additional tables can be added as needed.
 
-Usage
+# Usage
 
-Launch the application.
-Access the web interface via http://localhost:8080/.
-Use the input form to perform CRUD operations:
-Add, update, or delete records.
-Query and display information dynamically.
+1. Launch the application.
+2. Access the web interface via http://localhost:8080/.
+3. Use the input form to perform CRUD operations:
+- Add, update, or delete records.
+- Query and display information dynamically.
 
-Security Measures
+# Security Measures
 
-Implements SQL injection protection.
-Includes robust data validation mechanisms.
+- Implements SQL injection protection.
+- Includes robust data validation mechanisms.
 
-Technologies Used
+# Technologies Used
 
-Java Spring Boot: Backend framework.
-HTML, CSS: Frontend design.
-PostgreSQL: Database.
-Maven: Build automation.
+- Java Spring Boot: Backend framework.
+- HTML, CSS: Frontend design.
+- PostgreSQL: Database.
+- Maven: Build automation.
 
-License
+# License
 
 This project is licensed under the MIT License.
