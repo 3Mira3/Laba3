@@ -60,7 +60,7 @@ java -jar target/laba3restapplication.jar
 
 The application is designed to interact with a PostgreSQL database. Ensure that your database contains the required tables. The following example fields are expected:
 
-- 'country': 'id', 'name', 'priority'.
+- `country`: `id`, `name'`, `priority`.
 - Additional tables can be added as needed.
 
 # Usage
